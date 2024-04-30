@@ -21,7 +21,7 @@ const storeUrl = async (req, res) => {
   try {
     const urlid = randomUUID();
     Short.create({ url, urlid });
-    const shortUrl = `http://localhost:3000/${urlid}`;
+    const shortUrl = `https://sur-1xnj.onrender.com/${urlid}`;
     res.status(200).json({ shortUrl });
   } catch (error) {
     console.log(error);
