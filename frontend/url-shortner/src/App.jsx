@@ -17,7 +17,9 @@ function App() {
   const handleclick = async (e) => {
     e.preventDefault();
     if (url) {
-      const { data } = await axios.post("http://localhost:3000/short", { url });
+      const { data } = await axios.post("https://sur-1xnj.onrender.com/short", {
+        url,
+      });
 
       setShortUrl(data.shortUrl);
     }
