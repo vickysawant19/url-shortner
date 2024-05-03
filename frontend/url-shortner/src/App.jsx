@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 function App() {
+  const [loading, setLoading] = useState(false);
   const [url, seturl] = useState();
   const [shortUrl, setShortUrl] = useState();
 
@@ -17,11 +18,14 @@ function App() {
   const handleclick = async (e) => {
     e.preventDefault();
     if (url) {
+      setLoading(true);
       const { data } = await axios.post("https://sur-1xnj.onrender.com/short", {
         url,
       });
-
-      setShortUrl(data.shortUrl);
+      if (data) {
+        setShortUrl(data.shortUrl);
+      }
+      setLoading(false);
     }
   };
 
@@ -46,9 +50,10 @@ function App() {
           />
           <button
             onClick={handleclick}
-            className="border p-3 m-4 bg-green-600 text-white rounded-full hover:bg-stone-100 hover:text-gray-800 transition-colors duration-300"
+            disabled={loading}
+            className="border p-3 m-4 bg-green-600 text-white rounded-full hover:bg-stone-100 hover:text-gray-800 transition-colors duration-300 disabled:bg-gray-500 w-52 h-14 disabled:animate-pulse"
           >
-            Shorten URL
+            {loading ? "Loading..." : "Shorten URL"}
           </button>
           {shortUrl ? (
             <p className=" flex  w-full">
@@ -62,7 +67,8 @@ function App() {
               </a>
               <button
                 onClick={handleCopy}
-                className="m-1 hover:scale-110 text-2xl "
+                disabled={loading}
+                className={`m-1 hover:scale-110 text-2xl`}
               >
                 📄
               </button>
