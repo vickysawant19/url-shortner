@@ -34,11 +34,16 @@ function App() {
   return (
     <>
       <div className="bg-sky-300 min-h-screen flex justify-center items-center">
-        <div className="flex flex-col items-center justify-center w-[80%] bg-gradient-to-br from-blue-100 to-blue-600 rounded-md shadow-lg text-xl gap-5 p-6 md:w-[500px]">
-          <h1 className="mt-4 font-bold text-slate-900 text-2xl">
+        <div className="flex flex-col items-center justify-center w-[80%] bg-gradient-to-br to-blue-300 from-blue-600 rounded-xl shadow-xl text-xl gap-5 p-6 md:w-[500px]">
+          <h1 className="mt-4 font-bold text-3xl text-blue-100">
             URL Shortner
           </h1>
-          <input onChange={handlechange} className="w-full p-2 " type="text" />
+          <input
+            onChange={handlechange}
+            placeholder="Input or Paste URL to short."
+            className="w-full p-2 rounded-xl shadow-xl placeholder:text-gray-300"
+            type="text"
+          />
           <button
             onClick={handleclick}
             className="border p-3 m-4 bg-green-600 text-white rounded-full hover:bg-stone-100 hover:text-gray-800 transition-colors duration-300"
@@ -46,16 +51,19 @@ function App() {
             Shorten URL
           </button>
           {shortUrl ? (
-            <p className="">
+            <p className=" flex  w-full">
               <a
-                className="font-sans text-blue-100 bg-gray-700 p-1 whitespace-nowrap rounded-md"
+                className="font-sans text-blue-100 bg-gray-700 p-1 rounded-md"
                 href={shortUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 {shortUrl}
               </a>
-              <button onClick={handleCopy} className="m-2 hover:scale-110 ">
+              <button
+                onClick={handleCopy}
+                className="m-1 hover:scale-110 text-2xl "
+              >
                 📄
               </button>
             </p>

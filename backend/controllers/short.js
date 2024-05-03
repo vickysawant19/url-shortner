@@ -1,7 +1,7 @@
 const Short = require("../models/short");
 
 const ShortUniqueId = require("short-unique-id");
-const { randomUUID } = new ShortUniqueId({ length: 10 });
+const { randomUUID } = new ShortUniqueId({ length: 5 });
 
 const getallurls = async (req, res) => {
   try {
